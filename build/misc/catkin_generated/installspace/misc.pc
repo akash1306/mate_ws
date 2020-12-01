@@ -1,0 +1,8 @@
+prefix=/home/akash/mate_ws/install
+
+Name: misc
+Description: Description of misc
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy sensor_msgs std_msgs message_runtime

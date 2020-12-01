@@ -1,0 +1,8 @@
+prefix=/home/akash/mate_ws/install
+
+Name: lasertopc
+Description: Description of lasertopc
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

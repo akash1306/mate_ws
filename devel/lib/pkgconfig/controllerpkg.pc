@@ -1,0 +1,8 @@
+prefix=/home/akash/mate_ws/devel
+
+Name: controllerpkg
+Description: Description of controllerpkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
