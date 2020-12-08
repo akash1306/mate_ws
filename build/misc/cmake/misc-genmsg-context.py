@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/akash/mate_ws/src/misc/msg/intarray.msg"
+messages_str = "/home/akash/mate_ws/src/misc/msg/floatarray.msg"
 services_str = ""
 pkg_name = "misc"
 dependencies_str = "sensor_msgs;std_msgs"

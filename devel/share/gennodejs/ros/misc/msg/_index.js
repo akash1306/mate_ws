@@ -1,8 +1,8 @@
 
 "use strict";
 
-let intarray = require('./intarray.js');
+let floatarray = require('./floatarray.js');
 
 module.exports = {
-  intarray: intarray,
+  floatarray: floatarray,
 };

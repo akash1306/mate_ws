@@ -731,6 +731,12 @@ controllerpkg_BINARY_DIR:STATIC=/home/akash/mate_ws/build/controllerpkg
 //Value Computed by CMake
 controllerpkg_SOURCE_DIR:STATIC=/home/akash/mate_ws/src/controllerpkg
 
+//Value Computed by CMake
+converter_pkg_BINARY_DIR:STATIC=/home/akash/mate_ws/build/converter_pkg
+
+//Value Computed by CMake
+converter_pkg_SOURCE_DIR:STATIC=/home/akash/mate_ws/src/converter_pkg
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 

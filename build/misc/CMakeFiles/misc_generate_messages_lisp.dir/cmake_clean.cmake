@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/misc_generate_messages_lisp"
-  "/home/akash/mate_ws/devel/share/common-lisp/ros/misc/msg/intarray.lisp"
+  "/home/akash/mate_ws/devel/share/common-lisp/ros/misc/msg/floatarray.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

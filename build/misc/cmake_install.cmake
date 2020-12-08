@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/misc/msg" TYPE FILE FILES "/home/akash/mate_ws/src/misc/msg/intarray.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/misc/msg" TYPE FILE FILES "/home/akash/mate_ws/src/misc/msg/floatarray.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

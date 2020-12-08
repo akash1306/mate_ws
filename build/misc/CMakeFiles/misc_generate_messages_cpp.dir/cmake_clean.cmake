@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/misc_generate_messages_cpp"
-  "/home/akash/mate_ws/devel/include/misc/intarray.h"
+  "/home/akash/mate_ws/devel/include/misc/floatarray.h"
 )
 
 # Per-language clean rules from dependency scanning.
