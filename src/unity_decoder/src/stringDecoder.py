@@ -12,7 +12,7 @@ def callback(data):
     global depth_publish
     #rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
     stringArray = data.data
-    arrayLength=640
+    arrayLength=32
     depth_publish = array.array('f',(0 for f in range(0,arrayLength)))
     j=0
     i_start=0
@@ -23,8 +23,8 @@ def callback(data):
         while stringArray[i_end]!="a":
             
             i_end+=1
-        depth_publish[j]= float((float(stringArray[i_start:i_end]))*(3.0/1000))
-        if depth_publish[j] > 2.99:
+        depth_publish[j]= float(stringArray[i_start:i_end])
+        if depth_publish[j] > 4.99:
             depth_publish[j] = np.inf
         #print (stringArray[i_start:i_end])
         i_end+=1
