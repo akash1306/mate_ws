@@ -1,0 +1,17 @@
+Source ROS and workspace
+
+roslaunch rosbridge_server rosbridge_websocket.launch
+rosrun unity_decoder stringDecoder.py 
+rosrun converter_pkg tf2_broadcaster.py 
+rosrun converter_pkg laserscanpublisher.py 
+rosrun converter_pkg laser2pc.py 
+roslaunch octomap_server octomap_mapping.launch 
+rviz
+
+In rviz:
+1. Set fixed frame as odom
+2. Add Marker array
+3. Set marker topic as "Occupied....." from the drop down.
+
+
+Then control using the keyboard directly in unity. 

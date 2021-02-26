@@ -4,6 +4,7 @@
 import rospy
 import getch
 import os
+import time
 #from std_msgs.msg import Float64 # from package.[msg/srv] import ["msg"/"srv"] 
 from geometry_msgs.msg import Pose
 pose_msg = Pose()
@@ -29,7 +30,6 @@ def talker():
         #variable = k
         #pub.publish(variable)
         k=ord(getch.getch())
-
 
 
         if k==119 and pose_msg.position.x<1:
@@ -128,7 +128,6 @@ def talker():
 
         
 
-        pub.publish(pose_msg)
 
         os.system('clear')
         #rospy.loginfo('Envio: %s', variable)
@@ -146,7 +145,8 @@ def talker():
         print "Button Function: "
         print "    Function ID: ", pose_msg.orientation.w
         print " "
-        
+        time.sleep(1)
+        pub.publish(pose_msg)
         rate.sleep()
 
 if __name__ == '__main__':

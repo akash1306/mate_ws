@@ -20,28 +20,39 @@ Scan_msg.header.frame_id = "base_footprint"
 #Scan_msg.angle_max = math.pi/4 + 0.05
 #Scan_msg.angle_increment = 0.1
 Scan_msg.time_increment = 0.0
-Scan_msg.scan_time = 0
+Scan_msg.scan_time = 0.0
 Scan_msg.range_min = 0
-Scan_msg.range_max = 4.99
-Scan_msg.angle_max = (30.0*math.pi)/180
-Scan_msg.angle_min = 0
-Scan_msg.angle_increment = (0.9375*math.pi)/180
+Scan_msg.range_max = 29.99
+Scan_msg.angle_max = math.radians(0-(0.1875*15.0))
+#(float(data.data)/2)*(math.pi / 180)
+Scan_msg.angle_min = math.radians(0+(0.1875*15.0))
+#-(float(data.data)/2)*(math.pi / 180)
+Scan_msg.angle_increment = math.radians(0.1875)
 
 def callback(data):
     global Scan_msg
     i = 0
-    while i<640:
+    while i<31:
         Scan_msg.ranges = data.data
         i+=1
     
+    
+    
 
+def callbackFOV(data):
+    global Scan_msg
 
+#(120/640)*(math.pi/180)
+#(float(data.data)*(math.pi / 180))/640
 
 def listener():
     global Scan_msg
     rospy.init_node('Laser_Scan_Publisher')
     rospy.Subscriber("decodedDepth", floatarray, callback)
 
+def listenerFOV():
+    global Scan_msg
+    rospy.Subscriber('hFOV', String , callbackFOV)
 
 
 def talker():
@@ -57,6 +68,7 @@ def talker():
 def main():
     global Scan_msg
     listener()
+    listenerFOV()
     talker()
     rospy.spin()
 
