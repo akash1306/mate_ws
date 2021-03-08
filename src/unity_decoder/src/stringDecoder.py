@@ -12,7 +12,7 @@ def callback(data):
     global depth_publish
     #rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
     stringArray = data.data
-    arrayLength=31
+    arrayLength=251
     depth_publish = array.array('f',(0 for f in range(0,arrayLength)))
     j=0
     i_start=0
