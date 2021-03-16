@@ -22,12 +22,12 @@ Scan_msg.header.frame_id = "base_footprint"
 Scan_msg.time_increment = 0.0
 Scan_msg.scan_time = 0.0
 Scan_msg.range_min = 0
-Scan_msg.range_max = 29.99
-Scan_msg.angle_max = math.radians((0.1875*125.0))
-#(float(data.data)/2)*(math.pi / 180)
-Scan_msg.angle_min = math.radians(-(0.1875*125.0))
+Scan_msg.range_max = 49.9
+Scan_msg.angle_max = math.radians((0.1*275.0))
+#(float(data.data)/2)*(math.pi / 180)0.1875
+Scan_msg.angle_min = math.radians(-(0.1*275.0))
 #-(float(data.data)/2)*(math.pi / 180)
-Scan_msg.angle_increment = math.radians(0.1875)
+Scan_msg.angle_increment = math.radians(0.1)
 
 def callback(data):
     global Scan_msg

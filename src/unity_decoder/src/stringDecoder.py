@@ -8,11 +8,19 @@ import numpy as np
 
 stringArray = ""
 depth_publish = []
+
 def callback(data):
     global depth_publish
+    global modelTrigger
     #rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
     stringArray = data.data
-    arrayLength=251
+
+    if (modelTrigger == 1 || modelTrigger == 2):
+        arrayLength = 513
+    if (modelTrigger == 3 || modelTrigger == 4):
+        arrayLength = 1025
+    
+    
     depth_publish = array.array('f',(0 for f in range(0,arrayLength)))
     j=0
     i_start=0
@@ -24,13 +32,18 @@ def callback(data):
             
             i_end+=1
         depth_publish[j]= float((float(stringArray[i_start:i_end]))*(1000.0/1000))
-        if depth_publish[j] > 29.99:
+        if depth_publish[j] > 49.9:
             depth_publish[j] = np.inf
         #print (stringArray[i_start:i_end])
         i_end+=1
         i_start=i_end
         j+=1
     #print (depth_publish)
+
+def callbackModel(data):
+    global modelTrigger
+    modelTrigger = int(data.data)
+
 
 
 
@@ -43,6 +56,10 @@ def listener():
     rospy.Subscriber("depthArray", String, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
+
+def listenerModel():
+
+    rospy.Subscriber("modelTrigger", String, callbackModel)
     
 
 def talker():
@@ -58,6 +75,8 @@ def talker():
 
 def main():
     global depth_publish
+    global modelTrigger
+    listenerModel()
     listener()
     talker()
     rospy.spin()
