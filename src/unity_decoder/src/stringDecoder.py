@@ -14,11 +14,16 @@ def callback(data):
     global modelTrigger
     #rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
     stringArray = data.data
-
-    if (modelTrigger == 1 || modelTrigger == 2):
+    
+    if modelTrigger == 1 or modelTrigger == 2:
         arrayLength = 513
-    if (modelTrigger == 3 || modelTrigger == 4):
+    if modelTrigger == 3 or modelTrigger == 4:
         arrayLength = 1025
+
+    if modelTrigger == 2 or modelTrigger == 4:
+        max_range = 54.9
+    if modelTrigger == 1 or modelTrigger == 3:
+        max_range = 94.9
     
     
     depth_publish = array.array('f',(0 for f in range(0,arrayLength)))
@@ -32,7 +37,7 @@ def callback(data):
             
             i_end+=1
         depth_publish[j]= float((float(stringArray[i_start:i_end]))*(1000.0/1000))
-        if depth_publish[j] > 49.9:
+        if depth_publish[j] > max_range:
             depth_publish[j] = np.inf
         #print (stringArray[i_start:i_end])
         i_end+=1
