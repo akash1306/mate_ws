@@ -22,12 +22,12 @@ Scan_msg.header.frame_id = "base_footprint"
 Scan_msg.time_increment = 0.0
 Scan_msg.scan_time = 0.0
 Scan_msg.range_min = 0
-Scan_msg.range_max = 49.9
-Scan_msg.angle_max = math.radians((0.1*275.0))
-#(float(data.data)/2)*(math.pi / 180)0.1875
-Scan_msg.angle_min = math.radians(-(0.1*275.0))
-#-(float(data.data)/2)*(math.pi / 180)
-Scan_msg.angle_increment = math.radians(0.1)
+
+
+
+def listenerModel():
+
+    rospy.Subscriber("modelTrigger", String, callbackModel)
 
 def callback(data):
     global Scan_msg
@@ -36,7 +36,27 @@ def callback(data):
         Scan_msg.ranges = data.data
         i+=1
     
-    
+def callbackModel(data):
+    global modelTrigger
+    modelTrigger = int(data.data)
+    if modelTrigger == 1 or modelTrigger == 2:
+        Scan_msg.angle_max = math.radians(((85.0/512))*256.0)
+
+        Scan_msg.angle_min = math.radians(-((85.0/512)*256.0))
+
+        Scan_msg.angle_increment = math.radians((85.0/512))
+
+    if modelTrigger == 3 or modelTrigger == 4:
+        Scan_msg.angle_max = math.radians(((170.0/1024))*512.0)
+
+        Scan_msg.angle_min = math.radians(-(170.0/1024)*512.0)
+
+        Scan_msg.angle_increment = math.radians(170.0/1024)
+
+    if modelTrigger == 2 or modelTrigger == 4:
+        Scan_msg.range_max = 54.9
+    if modelTrigger == 1 or modelTrigger == 3:
+        Scan_msg.range_max = 94.9
     
 
 def callbackFOV(data):
