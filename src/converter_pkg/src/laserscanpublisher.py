@@ -35,6 +35,7 @@ def callback(data):
     while i<101:
         Scan_msg.ranges = data.data
         i+=1
+
     
 def callbackModel(data):
     global modelTrigger
@@ -57,6 +58,7 @@ def callbackModel(data):
         Scan_msg.range_max = 54.9
     if modelTrigger == 1 or modelTrigger == 3:
         Scan_msg.range_max = 94.9
+    
     
 
 def callbackFOV(data):
@@ -87,6 +89,7 @@ def talker():
         rate.sleep()
 def main():
     global Scan_msg
+    listenerModel()
     listener()
     listenerFOV()
     talker()
