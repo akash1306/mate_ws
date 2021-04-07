@@ -74,7 +74,7 @@ def talker():
     while not rospy.is_shutdown():
         publishingarray= floatarray(data=depth_publish)
         pub.publish(publishingarray)
-        #print (publishingarray)
+        print (publishingarray)
         rate.sleep()
 
 def main():
