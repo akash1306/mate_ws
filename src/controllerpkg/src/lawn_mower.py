@@ -81,12 +81,12 @@ class lawnclass(object):
         self.move_commands = Pose()
         self.conCommand.publish(self.move_commands)
 
-
+        
         if self.lawn_mower_flag == 1:
             
             while self.yaw>math.radians(-177):
                 print (self.yaw)
-                self.move_commands.orientation.z = 2
+                self.move_commands.orientation.z = 1
                 self.conCommand.publish(self.move_commands)
                 rate.sleep()
             self.move_commands = Pose()
@@ -98,10 +98,42 @@ class lawnclass(object):
             else:
                 self.lawn_mower_flag = 2
                 current_pose = self.auv_pose
+                
 
                 while abs(self.auv_pose.position.y - current_pose.position.y) <  + 5.0:
-                    print (self.auv_pose.position.y - current_pose.position.y)
+                    print (abs(self.auv_pose.position.y - current_pose.position.y))
                     self.move_commands.position.y = -1
+                    self.conCommand.publish(self.move_commands)
+                    rate.sleep()
+
+                self.move_commands = Pose()
+                self.conCommand.publish(self.move_commands)
+            
+
+
+        elif self.lawn_mower_flag == 2:
+            
+            if self.prox_value < 7:
+                self.lawn_mower_flag = 0  #0 Indicates the termination of the program
+            
+            else:
+                while self.yaw<math.radians(3):
+                    print (self.yaw)
+                    self.move_commands.orientation.z = -1
+                    self.conCommand.publish(self.move_commands)
+                    rate.sleep()
+                self.move_commands = Pose()
+                self.conCommand.publish(self.move_commands)
+
+
+            
+                self.lawn_mower_flag = 1
+                current_pose = self.auv_pose
+                
+
+                while abs(self.auv_pose.position.y - current_pose.position.y) <  + 5.0:
+                    print (abs(self.auv_pose.position.y - current_pose.position.y))
+                    self.move_commands.position.y = 1
                     self.conCommand.publish(self.move_commands)
                     rate.sleep()
 
@@ -140,14 +172,6 @@ def main():
     print ("Exiting Program")
     
 
-
-    while not rospy.is_shutdown():
-        
-
-            
-        rate.sleep()
-    
-    rospy.spin()
 
 if __name__ == '__main__':
     main()
