@@ -15,7 +15,7 @@ import math
 
 
 Scan_msg = LaserScan()
-Scan_msg.header.frame_id = "base_footprint"
+Scan_msg.header.frame_id = "base_scan"
 #Scan_msg.angle_min = math.pi/4 - 0.05
 #Scan_msg.angle_max = math.pi/4 + 0.05
 #Scan_msg.angle_increment = 0.1

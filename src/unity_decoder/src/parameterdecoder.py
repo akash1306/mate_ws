@@ -47,7 +47,7 @@ def listener():
 
 def talker():
     global para_publish
-    pub = rospy.Publisher('decodedDepth', floatarray, queue_size=10)
+    pub = rospy.Publisher('rovParameters', floatarray, queue_size=10)
     #rospy.init_node('decodedDepth', anonymous=True)
     rate = rospy.Rate(50) # 1hz
     while not rospy.is_shutdown():

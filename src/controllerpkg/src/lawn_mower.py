@@ -84,7 +84,7 @@ class lawnclass(object):
         
         if self.lawn_mower_flag == 1:
             
-            while self.yaw>math.radians(-177):
+            while self.yaw>math.radians(-175):
                 print (self.yaw)
                 self.move_commands.orientation.z = 1
                 self.conCommand.publish(self.move_commands)
@@ -117,7 +117,7 @@ class lawnclass(object):
                 self.lawn_mower_flag = 0  #0 Indicates the termination of the program
             
             else:
-                while self.yaw<math.radians(3):
+                while self.yaw<math.radians(5):
                     print (self.yaw)
                     self.move_commands.orientation.z = -1
                     self.conCommand.publish(self.move_commands)

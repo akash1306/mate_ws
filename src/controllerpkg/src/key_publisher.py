@@ -19,16 +19,14 @@ pose_msg.orientation.z = 0
 pose_msg.orientation.w = 0
 
 def talker():
-    #pub = rospy.Publisher('data_topic', Float64, queue_size=10) # TOPIC
+
     pub = rospy.Publisher('key', Pose, queue_size=10) # TOPIC
     rospy.init_node('key_publisher', anonymous=True)
     rate = rospy.Rate(10) # 10hz
-    
+
     
     while not rospy.is_shutdown():
-        #hello_str = "hello world %s" % k
-        #variable = k
-        #pub.publish(variable)
+
         k=ord(getch.getch())
 
 
@@ -121,6 +119,19 @@ def talker():
         if k==39:
                 pose_msg.orientation.w = 5
 
+
+        
+        if k==44:
+                if pose_msg.orientation.w == 6 :
+                        pose_msg.orientation.w = 7
+                else:
+                        pose_msg.orientation.w = 6
+  
+        if k==46:
+                if pose_msg.orientation.w ==8:
+                        pose_msg.orientation.w = 7
+                else:
+                        pose_msg.orientation.w = 8
 
 
         

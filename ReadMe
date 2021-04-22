@@ -3,6 +3,7 @@ Source ROS and workspace
 roslaunch rosbridge_server rosbridge_websocket.launch
 rosrun unity_decoder stringDecoder.py 
 rosrun converter_pkg tf2_broadcaster.py 
+rosrun converter_pkg scantfbroadcaster.py
 rosrun converter_pkg laserscanpublisher.py 
 rosrun converter_pkg laser2pc.py 
 roslaunch octomap_server octomap_mapping.launch 

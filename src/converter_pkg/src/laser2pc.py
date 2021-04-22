@@ -12,7 +12,7 @@ class Laser2PC():
 
     def laserCallback(self,data):
         cloud_out = self.laserProj.projectLaser(data)
-        cloud_out.header.frame_id = "base_footprint"
+        cloud_out.header.frame_id = "base_scan"
         self.pcPub.publish (cloud_out)
 
 if __name__ == '__main__':

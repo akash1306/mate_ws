@@ -15,8 +15,8 @@ def handle_pose(msg):
     t = geometry_msgs.msg.TransformStamped()
 
     t.header.stamp = rospy.Time.now()
-    t.header.frame_id = "odom"
-    t.child_frame_id = "base_footprint"
+    t.header.frame_id = "base_footprint"
+    t.child_frame_id = "base_scan"
     t.transform.translation.x = msg.position.x
     t.transform.translation.y = msg.position.y
     t.transform.translation.z = msg.position.z
@@ -28,6 +28,6 @@ def handle_pose(msg):
     br.sendTransform(t)
 
 if __name__ == '__main__':
-    rospy.init_node('AUV_Pose_Broadcaster')
-    rospy.Subscriber('propPos', Pose, handle_pose)
+    rospy.init_node('SCAN_Pose_Broadcaster')
+    rospy.Subscriber('scanPos', Pose, handle_pose)
     rospy.spin()
